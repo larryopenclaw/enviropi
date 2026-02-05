@@ -1,0 +1,16 @@
+[Unit]
+Description=EnviroPi LCD Display Service
+After=network.target
+
+[Service]
+Type=simple
+User=enviropi
+WorkingDirectory=/home/enviropi
+ExecStart=/usr/bin/python3 /home/enviropi/display_readings.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/home/enviropi/display.log
+StandardError=append:/home/enviropi/display.log
+
+[Install]
+WantedBy=multi-user.target
